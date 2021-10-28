@@ -1,0 +1,64 @@
+
+Adding Listing (1):
+
+	auctionListing(String address, Object imageOrFile, String title, String description, double price, int priceIncrement, double timeRemaining, double shopPrice);
+
+
+	- check if address is valid and owns imageOrFile.
+	- verify that price is >= 0, priceIncrement is > 0, and shopPrice is > 0.
+	- check if timeRemaining is > greater than four blocks
+	- when valid bid is made, update price accordingly
+	- once timeRemaining hits 0, and if bid has been made, place listing into limbo and attempt to complete transaction.
+		- if transaction is never confirmed, place listing back into marketplace with six hours remaining (1440 blocks).
+
+
+		address - wallet address of listing owner
+		imageOrFile - object that represents image or sound file being auctioned
+		title - title of object
+		description - description of object. 200 character limit
+		price - initially the starting price of listing, then updated to current price (default 1 WC)
+		priceIncrement - minimum increase that each bid must be from the previous (default 0.5 WC)
+		timeRemaining - time remaining on listing. Four block minimum or about an hour (default 2880 blocks or about 12 hours)
+		shopPrice - the price that the item will be listed in in the Shop if no bids are made
+
+
+Bidding Functionality (2):
+
+	bid(double bidPrice, String address, String comment)
+		
+	- check if bid price is greater than price+priceIncrement. If not, deny bid
+	- check if price is <= to value in the bidding account
+	- if bid is validated, extend timeRemaining by two blocks (30 minutes)		
+	- ban addresses that never payout, and follow functionality in (1).
+		- alternatively, could take equivalent amount of Ethereum from bidder account (on lightning network?) to prevent fraudulent listings. If bid is surpassed, return funds.
+
+
+	Pool Bids:
+		- Pool Bids allow multiple users to bid on one item. When a Pool Bid is made, create new Ethereum wallet tied to bid.
+		- Create link that is able to be sent to other users tied to the bid that is valid for 24 hours (5760 blocks).
+		- bid will not be verified until the value of the wallet exceeds the current price of the listing.
+		- once pool bid is verified, the link is kept until the listing expires so the users can add to pool.
+		- if the pool bid is no longer 
+
+
+		comment - optional bid comment. 100 character limit
+
+
+Shop Functionality (3):
+
+	- if listing receives no bids when timeRemaining reaches 0, move the listing from the Auction House to the Shop. The Shop is a space where listings can be purchased directly for a set price,
+	defined by user at the creation of the listing. Delete Auction object and create Shop listing.
+	- also have the ability to make a direct Shop listing outright. Other than bidding, has the same functionality as auctionListing().
+
+	
+	shopListing(String address, Object imageOrFile, String title, String description, double shopPrice);
+
+
+UI Description (4): 
+
+	- the marketplace should be a vertical scroll that is one listing wide and n listings long (n being number of listings).
+	- each listing has the listing title and price shown above the image or file.
+ 
+	- to the right of the listing, show the time remaining converted into analog.
+	- have "Bid" button below
+	- when pressed, have pop-up asking for a bid price and an optional comment, as well as a quick summary of the item.

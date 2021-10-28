@@ -3,14 +3,19 @@ disclaimer: I can't spell and dont have the time to look over everything im very
 Auction plans:
 
 Bidding system:
-    Adding bid:
+    
+
+Adding bid(1):
         can be an image, or a sound file (has a max size but idk anything about that so idk what it woudl be)
             with a discription up to 200 characters
         can also be a txt file of up to 1000 characters
         must initlize starting price and bid incraments 
             default starting price is 1 wolvercoin and default bid incrament is 0.5 wolvercoin
         must initlize bid time
-    Auction:
+    
+
+
+Auction (2):
         someone puts in bid before bid time ends
             if no bid before bid time ends item goes to the shop
         every time someone puts in bid bid time extends by 2 minutes
@@ -18,14 +23,23 @@ Bidding system:
             like maybe option to add multiple people to a party to pool funds
         cannot bid more money than you own (duh)
         can add comment to bid (to maybe persuade people to be nice??) 100 characters
-    Shop:
+    
+
+
+Shop(3):
         if you dont wanna auction something just sell it for a set price
         add item (same as auction) and sell price
         also if item is not bid on then its at shop
-    UI:
+    
+
+
+UI(4):
         dropdown bar to go to dif places ie: shop, add bid, acution room, chat room
         in add bid:
-            text boxes (idk what theyre actually called liek the place you can type into) for:
+            text boxes (idk what theyre actually called liek the place you can type into) 
+
+
+	for:
                 initlal price
                 bid incrament
                 discription
