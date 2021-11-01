@@ -38,7 +38,7 @@ Bidding Functionality (2):
 		- Create link that is able to be sent to other users tied to the bid that is valid for 24 hours (5760 blocks).
 		- bid will not be verified until the value of the wallet exceeds the current price of the listing.
 		- once pool bid is verified, the link is kept until the listing expires so the users can add to pool.
-		- if the pool bid is no longer 
+		- if the pool value is no longer the greatest bid at time expiration, return funds. 
 
 
 		comment - optional bid comment. 100 character limit
