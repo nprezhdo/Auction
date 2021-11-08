@@ -40,6 +40,18 @@ public class AuctionListing {
         int startBlock = 0; // SET TO ZERO FOR TESTING <--------------
         endBlock = startBlock + remainingTime;
     }
+
+    public boolean endAuction(){
+        if (isActive == true){
+            isActive = false;
+            seller.addFunds(currentPrice);
+            System.out.println ("item has been given to " + currentBidder.getWalletAddress());
+            return true;
+
+        }
+        return false;
+    }
+
     public AuctionListing(AuctionUser seller, Object imageOrFile, String title, String description, double initialPrice,
             double priceIncrement, int auctionTime, double shopPrice) {
         isActive = true;

@@ -31,9 +31,14 @@ Auction Class (1):
 		
 		- check if bid price is greater than price+priceIncrement. If not, deny bid
 		- check if price is <= to value in the bidding account
-		- if bid is validated, extend timeRemaining by two blocks (30 minutes)		
-		- Take equivalent amount of WC from bidder account (on lightning network?) to prevent fraudulent bids. If bid is surpassed by the expiration of listing, return
-		  funds.
+		- if bid is validated, extend timeRemaining by two blocks (30 minutes)	
+		- Call withDraw (double bidPrice, String address)	
+		
+
+		withdraw (double bidPrice, String address)
+		-Takes equivalent amount of WC from address account (on lightning network?) If bid is surpassed by the expiration of listing, return
+		funds.
+		-returns true if withdraw if successful, false otherwise
 
 
 	Pool Bids:

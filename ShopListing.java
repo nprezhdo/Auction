@@ -13,4 +13,15 @@ public class ShopListing {
         this.shopPrice = shopPrice;
 
     }
+
+    public boolean purchase (AuctionUser buyer){
+        if (buyer.getWalletBalance()<shopPrice){
+            return false;
+        }
+        seller.addFunds(shopPrice);
+        buyer.withdraw(shopPrice);
+        //transfer money between wallets
+        //transfer item to seller
+        return true;
+    }
 }
